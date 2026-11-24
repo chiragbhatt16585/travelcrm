@@ -1,0 +1,89 @@
+/* Theme Selector Styles */
+.theme-selector {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 0.75rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  transition: all 0.3s ease;
+}
+
+[data-theme="theme2"] .theme-selector {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.theme-btn {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-family: "Poppins", sans-serif;
+  min-width: 90px;
+}
+
+.theme-btn.active {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.theme-btn:not(.active) {
+  background: rgba(148, 163, 184, 0.1);
+  color: var(--text);
+}
+
+[data-theme="theme2"] .theme-btn:not(.active) {
+  background: rgba(99, 102, 241, 0.1);
+  color: #cbd5e1;
+}
+
+.theme-btn:hover:not(.active) {
+  background: rgba(148, 163, 184, 0.2);
+  transform: translateX(-3px);
+}
+
+[data-theme="theme2"] .theme-btn:hover:not(.active) {
+  background: rgba(99, 102, 241, 0.2);
+}
+
+.theme-btn:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .theme-selector {
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+    transform: none;
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 480px) {
+  .theme-selector {
+    padding: 0.5rem;
+    gap: 0.4rem;
+  }
+
+  .theme-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.7rem;
+    min-width: 75px;
+  }
+}

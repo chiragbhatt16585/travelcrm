@@ -1,0 +1,31 @@
+RewriteEngine On
+
+RewriteRule ^router\.php$ - [R=404,L]
+
+RewriteCond %{THE_REQUEST} \s/+index\.php[\s?] [NC]
+RewriteRule ^index\.php$ / [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+packages\.php[\s?] [NC]
+RewriteRule ^packages\.php$ /packages [R=301,L,QSA]
+
+RewriteCond %{THE_REQUEST} \s/+services\.php[\s?] [NC]
+RewriteRule ^services\.php$ /about [R=301,L,QSA]
+
+RewriteCond %{THE_REQUEST} \s/+contact\.php[\s?] [NC]
+RewriteRule ^contact\.php$ /contact [R=301,L,QSA]
+
+RewriteCond %{THE_REQUEST} \s/+destination\.php\?dest=([A-Za-z0-9-]+) [NC]
+RewriteRule ^destination\.php$ /destinations/%1 [R=301,L,QSA]
+
+RewriteCond %{THE_REQUEST} \s/+package\.php\?id=([0-9]+) [NC]
+RewriteRule ^package\.php$ /package/%1 [R=301,L,QSA]
+
+RewriteCond %{THE_REQUEST} \s/+quote\.php\?t=([A-Za-z0-9]+) [NC]
+RewriteRule ^quote\.php$ /quote/%1 [R=301,L,QSA]
+
+RewriteRule ^packages/?$ packages.php [L,QSA]
+RewriteRule ^about/?$ services.php [L,QSA]
+RewriteRule ^contact/?$ contact.php [L,QSA]
+RewriteRule ^destinations/([A-Za-z0-9-]+)/?$ destination.php?dest=$1 [L,QSA]
+RewriteRule ^package/([0-9]+)/?$ package.php?id=$1 [L,QSA]
+RewriteRule ^quote/([A-Za-z0-9]+)/?$ quote.php?t=$1 [L,QSA]
